@@ -1,13 +1,13 @@
-##环境是mac
+环境是mac
 
-####一、安装emsdk 
-1、git clone https://github.com/emscripten-core/emsdk.git  
-2、cd emsdk
-3、./emsdk install latest
-4、./emsdk activate latest
-5、source ./emsdk_env.sh
+一、安装emsdk   
+1、git clone https://github.com/emscripten-core/emsdk.git   
+2、cd emsdk  
+3、./emsdk install latest  
+4、./emsdk activate latest  
+5、source ./emsdk_env.sh  
 
-####二、C代码(main.cpp)  
+二、C代码(main.cpp)  
 ```c
 #include <emscripten.h>  
 extern "C"  {  
@@ -18,7 +18,7 @@ extern "C"  {
 };  
 ```
 
-####三、html代码(index.html)  
+三、html代码(index.html)  
 ```javascript
 <!DOCTYPE html>  
 <html>  
@@ -41,12 +41,12 @@ extern "C"  {
 </script>
 ```
 
-####三、编译命令
+三、编译命令
 ```shell
 emcc main.cpp -std=c++11 -Os  -s WASM=1 -o main.js -s EXPORTED_FUNCTIONS='["_reply"]' -s ASSERTIONS=1 -s EXTRA_EXPORTED_RUNTIME_METHODS='["allocateUTF8","intArrayFromString","Pointer_stringify"]'
 ```
 
-####四、测试  
+四、测试  
 将编译出来的main.js，index.html，main.wasm拷贝到服务器根目录下
 /Library/WebServer/Documents  
 运行sudo apachectl start  
