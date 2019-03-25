@@ -1,0 +1,19 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <script src="./main.js"></script>  
+    <input type="text"  id="showtext" >  
+</body>  
+</html>    
+<script type="text/javascript">  
+(function() {  
+	Module.onRuntimeInitialized = function() {  
+		var input = "hello";   //生成字符串  
+		var input_ptr = allocateUTF8(input);  //生成字符串的指针  
+		var retPtr = Module._reply(input_ptr);  //调用c方法  
+		var resValue = UTF8ToString(retPtr);  //将返回指针转成字符串  
+		document.getElementById("showtext").value = resValue;//显示  
+		_free(input_ptr);//释放返回指针  
+	}  
+})();  
+</script>
